@@ -7,43 +7,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="css\index.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-
+    
+        <link rel="stylesheet" href="../css/index.css" type="text/css">
+               
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
                 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
                 crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
-        
-        <!-- font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
         <title> TripeR! | 여행지 공유 사이트 </title>
-        
 
     </head>
 
     <body>
+        
         <header>
             <div> <!-- 여기는 Triper 로고가 들어갈 곳(제작해야함!!) -->
                 Triper 로고
             </div>
 
             <nav> <!-- nav bar -->
-                <ul>
-                    <li>로그인/로그아웃 기능</li>
-                    <li>지역 선택 기능(현재는 서울만 가능)</li>
-                </ul>
-                
+                <div class="row-cont">
+                    <div>
+                        <a href="javascript:kakaoLogin();"> <img class='login-img' src='https://mindhub.kr/_nuxt/img/ec41fe9.png'></a>
+                    </div>
+
+                    <div>
+                        <div>
+                            지역 선택 기능
+                        </div>
+                    </div>
+                </div>
 
             </nav>
         </header>
@@ -51,6 +51,7 @@
         <section>
             <div> <!-- 카드 작성하는 곳 (평소에는 숨기지만, 버튼을 눌렀을 때 나타나고 사라진다.)-->
                 카드 작성 안내, 카드 작성폼 Open&Close button
+                여기서 작성한 내용은 DB로 저장되어 보관시키고, 카드가 들어갈 해당id를 적어 카드를 붙여넣기 할 코드를 작성한다.
             </div>
 
             <div> <!-- 여기는 등록한 카드를 볼 수 있는 곳 -->
@@ -59,6 +60,7 @@
                 </div>
                 <div>
                     등록된 카드는 작성자 이름/작성 날짜/관련 url/url의 orimg/추천 수/댓글/해시태그/글 삭제 버튼(작성자에게만)/글 숨기기 버튼(모든 사람에게만) 이 보이게 만들어진다.
+                    이 곳에 카드를 붙여넣기 해줄 수 있게끔 id를 지정해주어야 한다.
                 </div>
             </div>
         </section>
@@ -66,6 +68,27 @@
         <footer>
             made by Joy
         </footer>
+
+        <script>
+            window.Kakao.init('153b4e119bd5cd5361cd5de1aca9311a');
+            
+            function kakaoLogin() {
+                window.Kakao.Auth.login({
+                    scope:'profile_nickname, profile_image, account_email, gender',
+                    success: function(authObj) {
+                        console.log(authObj);
+                        window.Kakao.API.request({
+                            url: '/v2/user/me',
+                            success: res => {
+                                const kakao_account =res.kakao_account;
+                                console.log(kakao_account);
+                            }
+                        });
+                    }
+                });
+            }
+            window.Kakao.init
+        </script>
     </body>
 
 </html>

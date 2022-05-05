@@ -1,0 +1,45 @@
+/**/
+/**/
+
+/*flex row container*/
+.row-cont {
+    display: flex;
+    flex-direction: row;
+}
+
+/*flex coulmn container*/
+.col-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+/*header, section, footer 반응형*/
+.header {
+    height:150px;
+    }
+
+.section {
+    height:calc(100vh - 250px)
+    }
+
+.footer {
+    height: 100px;
+    }
+/**/
+/**/
+/**/
+/**/
+
+
+
+
+/* 카카오계정 사용하여 로그인 배너 스타일*/
+.login-img {
+    height: 60px;
+    width: auto;
+}
+
+@media screen and (max-width: 48rem) {}
+
+
+
