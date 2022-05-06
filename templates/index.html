@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- CSS -->
-    
         <link rel="stylesheet" href="../css/index.css" type="text/css">
                
         <!-- Optional JavaScript -->
@@ -20,6 +19,12 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Noto+Serif+KR&display=swap');
+        </style>
+        
+
 
         <title> TripeR! | 여행지 공유 사이트 </title>
 
@@ -34,15 +39,13 @@
 
             <nav> <!-- nav bar -->
                 <div class="row-cont">
-                    <div>
-                        <a href="javascript:kakaoLogin();"> <img class='login-img' src='https://mindhub.kr/_nuxt/img/ec41fe9.png'></a>
-                    </div>
-
-                    <div>
                         <div>
-                            지역 선택 기능
+                            <button class='select-btn' onclick="javascript:selectArea();">지역 선택</button>
                         </div>
-                    </div>
+
+                        <div class ='login-img'>
+                            <a href="javascript:kakaoLogin();"> <img src='../static/kakao_login_medium_narrow.png'></a>
+                        </div>
                 </div>
 
             </nav>
@@ -72,6 +75,10 @@
         <script>
             window.Kakao.init('153b4e119bd5cd5361cd5de1aca9311a');
             
+            function selectArea() {
+                alert('현재는 사용할 수 없는 기능입니다.')
+            }
+
             function kakaoLogin() {
                 window.Kakao.Auth.login({
                     scope:'profile_nickname, profile_image, account_email, gender',
