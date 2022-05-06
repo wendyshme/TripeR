@@ -1,10 +1,36 @@
 /**/
-/**/
+/*button*/
+button {
+    margin: 20px;
+    padding: 0.5rem 1rem;
+
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
+    position: relative;
+    
+
+    display: inline-block;
+    width: auto;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.select-btn {
+    background-color: rgb(255, 254, 253);
+}
 
 /*flex row container*/
 .row-cont {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin: 10px 20px;
 }
 
 /*flex coulmn container*/
@@ -14,18 +40,23 @@
 }
 
 /*header, section, footer 반응형*/
-.header {
+header {
     height:150px;
     }
 
-.section {
+section {
     height:calc(100vh - 250px)
     }
 
-.footer {
+footer {
     height: 100px;
     }
-/**/
+
+/*nav bar*/
+nav {
+    background-color: rgb(165, 197, 159);
+
+}
 /**/
 /**/
 /**/
@@ -34,9 +65,12 @@
 
 
 /* 카카오계정 사용하여 로그인 배너 스타일*/
+
 .login-img {
-    height: 60px;
-    width: auto;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    
 }
 
 @media screen and (max-width: 48rem) {}
