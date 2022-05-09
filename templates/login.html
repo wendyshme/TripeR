@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+<body>
+    <ul class="dropdown">
+        <li>
+            <a href="#">같이 즐겨요!</a>
+            <ul class="drophover">
+                <li> <a href="#">카카오로 로그인</a> </li>
+            </ul>
+        </li>
+    </ul>
+        <a href="javascript:kakaoLogin();"> <img src='../static/kakao_login_medium_narrow.png'></a>
+        
+        <script>
+            window.Kakao.init('153b4e119bd5cd5361cd5de1aca9311a');
+            
+            function selectArea() {
+                alert('현재는 사용할 수 없는 기능입니다.')
+            }
+
+            function kakaoLogin() {
+                window.Kakao.Auth.login({
+                    scope:'profile_nickname, profile_image, account_email, gender',
+                    success: function(authObj) {
+                        console.log(authObj);
+                        window.Kakao.API.request({
+                            url: '/v2/user/me',
+                            success: res => {
+                                const kakao_account =res.kakao_account;
+                                console.log(kakao_account);
+                            }
+                        });
+                    }
+                });
+            }
+            window.Kakao.init
+        </script>
+</body>
+</html>
