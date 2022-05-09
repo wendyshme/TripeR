@@ -4,6 +4,7 @@
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- CSS -->
@@ -33,22 +34,29 @@
     <body>
         
         <header>
-            <div> <!-- 여기는 Triper 로고가 들어갈 곳(제작해야함!!) -->
-                Triper 로고
-            </div>
-
-            <nav> <!-- nav bar -->
-                <div class="row-cont">
-                        <div>
-                            <button class='select-btn' onclick="javascript:selectArea();">지역 선택</button>
-                        </div>
-
-                        <div class ='login-img'>
-                            <a href="javascript:kakaoLogin();"> <img src='../static/kakao_login_medium_narrow.png'></a>
-                        </div>
+            <div class="row-cont">
+                <div>
+                    <button class='select-btn' onclick="javascript:selectArea();">지역 선택</button>
                 </div>
 
-            </nav>
+                <div> <!-- 여기는 Triper 로고가 들어갈 곳(제작해야함!!) -->
+                    Triper 로고
+                </div>
+
+                <button id="show">같이 즐겨요!</button>
+                    <div class="background">
+                        <div class="window">
+                            <div class="popup">
+                                <div class='login-img '>
+                                    <a href="javascript:kakaoLogin();"> <img src='../static/kakao_login_medium_narrow.png'></a>
+                                <button id="close">팝업닫기</button>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+            
         </header>
 
         <section>
@@ -95,6 +103,17 @@
                 });
             }
             window.Kakao.init
+
+            function show () {
+                document.querySelector(".background").className = "background show";
+            }
+
+            function close() {
+                document.querySelector(".background").className = "background";
+            }
+
+            document.querySelector("#show").addEventListener("click", show);
+            document.querySelector("#close").addEventListener("click", close);
         </script>
     </body>
 
